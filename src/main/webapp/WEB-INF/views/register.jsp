@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h3>Register</h3>
-                        <form action="Signup" method="post">
+                        <form action="signup" method="post">
                             <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>

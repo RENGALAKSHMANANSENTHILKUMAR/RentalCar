@@ -26,10 +26,16 @@ public class FirstController {
     }
 
 
-    @RequestMapping("Signup")
+    @RequestMapping("signup")
     public String insertUser(User user, @RequestParam("phonenumber") String phonenumber){
+
         user.setPhonenumber(phonenumber);
-        userregistration.addUser(user);
+        User useremail =userregistration.checkUserExistance(user.getEmail());
+        if (useremail==null)
+            userregistration.addUser(user);
+        else
+            return "redirect:/register";
+
         return "redirect:/login";
     }
 
@@ -39,7 +45,7 @@ public class FirstController {
         return "register";
     }
 
-   @PostMapping("Signin")
+   @PostMapping("signin")
    public String  signin(@RequestParam("email")String email, @RequestParam("password")String password) {
         User user=userregistration.verifyUserBasedOnEmail(email,password);
         if (user!=null)

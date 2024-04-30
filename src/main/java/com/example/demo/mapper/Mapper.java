@@ -15,6 +15,10 @@
             @Select("select * from users where email = #{email} AND password = #{password} ")
             public User verifyUserBasedOnEmail(String email, String password );
 
+            //useremailverification for registration
+
+            @Select("Select * from users where email = #{email}")
+            public User checkUserExistance(String email);
 
         }
 
